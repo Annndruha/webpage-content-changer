@@ -1,20 +1,16 @@
 function reddenPage() {
-    document.body.style.backgroundColor = 'red';
+    //document.body.style.backgroundColor = 'red';
+    //$('#d''root: --theme-page-background-color: #afafaf;'
+    document.documentElement.style.setProperty('--theme-page-background-color', '#fff');
     console.log('reddenPage')
 }
 
+function remove_rule() {
+    document.body.style.backgroundColor = 'white';
+}
 
 function add_rule() {
-    //if (!tab.url.includes("chrome://")) {
     console.log('executeScript.')
-    // const tab_id = getTabId()
-    // chrome.scripting.executeScript({
-    //     target: {tabId: tab_id},
-    //     function: reddenPage
-    // })
-
-    //}
-
     chrome.tabs.query({active: true}, function(tabs){
         chrome.scripting.executeScript({
             target: {tabId: tabs[0].id},
@@ -23,19 +19,8 @@ function add_rule() {
     })
 }
 
-
-$("#apply").on('click', function (e) {
-    e.stopPropagation()
-    console.log('Apply pressed.')
-    add_rule()
-})
-
-
-console.log('Main loaded')
-
 const button = document.querySelector('input');
 const paragraph = document.querySelector('p');
-
 button.addEventListener('click', updateButton);
 
 function updateButton() {
@@ -46,5 +31,7 @@ function updateButton() {
     } else {
         button.value = 'Apply rule!'
         paragraph.textContent = 'Rule disabled.'
+        remove_rule()
     }
 }
+console.log('Content changer main script loaded.')

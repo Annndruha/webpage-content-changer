@@ -5,3 +5,10 @@
 #apply {
   cursor: pointer;
 }
+
+body {
+  min-width: 800px;
+  max-width: 100%;
+  min-height: 600px;
+  max-height: 100%;
+}
