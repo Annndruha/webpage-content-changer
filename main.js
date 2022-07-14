@@ -1,8 +1,8 @@
-function reddenPage() {
-    //document.body.style.backgroundColor = 'red';
+function reddenPage(url) {
+    document.body.style.backgroundColor = 'red';
     //$('#d''root: --theme-page-background-color: #afafaf;'
-    document.documentElement.style.setProperty('--theme-page-background-color', '#fff');
-    console.log('reddenPage')
+    //document.documentElement.style.setProperty('--theme-page-background-color', '#fff');
+    console.log('reddenPage', url)
 }
 
 function remove_rule() {
@@ -14,8 +14,10 @@ function add_rule() {
     chrome.tabs.query({active: true}, function(tabs){
         chrome.scripting.executeScript({
             target: {tabId: tabs[0].id},
-            function: reddenPage
+            function: reddenPage,
+            args: [tabs[0].url]
         })
+        console.log(tabs[0].url)
     })
 }
 
@@ -35,3 +37,5 @@ function updateButton() {
     }
 }
 console.log('Content changer main script loaded.')
+
+add_rule()
