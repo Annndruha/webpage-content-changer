@@ -9,7 +9,7 @@ function changeContent(rules) {
             let value = rule['value']
             let selector = rule['selector']
             let el = document.querySelector(selector)
-            el.style.setProperty(property, value.replace(';', ''))
+            el.style.setProperty(property, value)
         }
         catch (e) {
             console.log(e)
