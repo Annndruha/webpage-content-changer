@@ -1,7 +1,4 @@
-function set_rule(url, selector, property, value){
-    url = new URL(url)
-    let domain = url.hostname
-
+function set_rule(domain, selector, property, value){
     chrome.storage.local.get(null, (result)=> {
         console.log('result', result, 'domain', domain)
         let site_rules = result[domain]
@@ -24,6 +21,38 @@ function set_rule(url, selector, property, value){
     })
 }
 
+function remove_rule(){
+    chrome.tabs.query({active: true}, function(tabs){
+        let url = new URL(tabs[0].url)
+        let domain = url.hostname
+        let ruleid = 3 // TODO: add buttons
+
+        chrome.storage.local.get(null, (result)=> { // TODO: Optimize call for domain, not for null
+            let site_rules = result[domain]
+            let n_rules = 0
+            if (varDefined(site_rules)){
+                n_rules = Object.keys(site_rules).length
+
+                // if (n_rules===1) {
+                //     site_rules = {}
+                // }
+                // else {
+                //     for (let i=ruleid; i<n_rules; i++){
+                //         site_rules[ruleid] = site_rules[ruleid+1]
+                //     }
+                //     delete site_rules[n_rules]
+                // }
+                //
+                // chrome.storage.local.set({[domain]: site_rules}, () => {
+                //     chrome.storage.local.get(null, (res) => {
+                //         addRuleslist(domain)
+                //         console.log("Storage value set:", res[domain])})
+                // })
+            }
+        })
+    })
+}
+
 function updateButton() {
     let selector =  document.getElementById('selector').value
     let property =  document.getElementById('ruleproperty').value
@@ -33,7 +62,7 @@ function updateButton() {
     chrome.tabs.query({active: true}, function(tabs){
         let url = new URL(tabs[0].url)
         let domain = url.hostname
-        set_rule(url, selector, property, value)
+        set_rule(domain, selector, property, value)
     })
 
     // TODO: get edit access from main to active page
@@ -45,8 +74,13 @@ function updateButton() {
     // })
 }
 
-const button = document.querySelector('#apply');
-button.addEventListener('click', updateButton);
+const addrule_button = document.querySelector('#apply');
+addrule_button.addEventListener('click', updateButton);
+
+
+const remrule_button = document.querySelector('#remove');
+remrule_button.addEventListener('click', remove_rule);
+
 
 // Add rules list when open popup
 chrome.tabs.query({active: true}, function(tabs){

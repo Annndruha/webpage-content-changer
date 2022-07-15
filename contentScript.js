@@ -19,7 +19,7 @@ function changeContent(rules) {
 
 
 chrome.storage.local.get(null, (res)=> {
-    let url = document.location.href
+    let url = document.location.href // TODO: Filter for extention id (if script run from main)
     url = new URL(url)
     const domain = url.hostname
     let rules = res[domain]
