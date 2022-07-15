@@ -18,7 +18,7 @@ function set_rule(url, property, value){
 
         chrome.storage.local.set({[domain]: site_rules}, () => {
             chrome.storage.local.get(null, (res) => {
-                console.log("Storage value set:", res[domain])}) //[0]['property'], 'value=', res[domain][0]['value']
+                console.log("Storage value set:", res[domain])})
         })
     })
 }
@@ -35,48 +35,3 @@ function updateButton() {
 const button = document.querySelector('#apply');
 button.addEventListener('click', updateButton);
 console.log('Content changer main script loaded.')
-
-
-
-// chrome.storage.local.get(null, (res)=> {
-//     //button.value = 'Change rule'
-//     paragraph.textContent = res['rule'][1]
-//     //console.log('ruuullleee')
-// })
-//add_rule()
-
-// if (button.value === 'Rule 1') {
-//     button.value = 'Rule 2'
-//     let where = 'body'
-//     let rule = 'document.body.style.backgroundColor = \'green\';'
-//     set_rule(where, rule)
-// }
-// else {
-//     button.value = 'Rule 1'
-//     let where = 'body'
-//     let rule = 'document.body.style.backgroundColor = \'red\';'
-//     set_rule(where, rule)
-// }
-
-// function reddenPage(url) {
-//     document.body.style.backgroundColor = 'red';
-//     //$('#d''root: --theme-page-background-color: #afafaf;'
-//     //document.documentElement.style.setProperty('--theme-page-background-color', '#fff');
-//     console.log('reddenPage', url)
-// }
-//
-// function remove_rule() {
-//     document.body.style.backgroundColor = 'white';
-// }
-
-// function add_rule() {
-//     console.log('executeScript.')
-//     chrome.tabs.query({active: true}, function(tabs){
-//         chrome.scripting.executeScript({
-//             target: {tabId: tabs[0].id},
-//             function: reddenPage,
-//             args: [tabs[0].url]
-//         })
-//         console.log(tabs[0].url)
-//     })
-// }

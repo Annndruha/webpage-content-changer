@@ -26,17 +26,7 @@ chrome.storage.local.get(null, (res)=> {
 })
 
 
-//console.log('==============content Sctipt================')
-// console.log(document.location.href)
-// console.log('==============content End================')
-// // document.body.style.backgroundColor = 'red';
-// // chrome.storage.local.get(null, (res)=> {
-// //    //res['rule']
-// //     console.log('ruuullleee')
-// // })
-// // console.log('content')
-// console.log('251352538325825')
-//
+
 // chrome.storage.local.get(null, (res)=> {
 //     console.log('local.get')
 //     console.log(res)

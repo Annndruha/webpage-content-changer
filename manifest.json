@@ -2,7 +2,7 @@
   "name": "Content changer",
   "manifest_version": 3,
   "version": "0.5",
-  "description": "Apply rule for site.",
+  "description": "Apply your own css for anyone site.",
   "permissions": [
     "activeTab",
     "storage",
@@ -20,5 +20,8 @@
     "default_title": "Content changer",
     "default_icon": "icon.png",
     "default_popup": "popup.html"
+  },
+  "icons":{
+    "128": "icon.png"
   }
 }
