@@ -7,7 +7,8 @@ function changeContent(rules) {
             let rule = rules[i]
             let property = rule['property']
             let value = rule['value']
-            let el = document.querySelector('html')
+            let selector = rule['selector']
+            let el = document.querySelector(selector)
             el.style.setProperty(property, value)
         }
         catch (e) {

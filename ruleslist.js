@@ -1,8 +1,8 @@
 function ruleToText(rule) {
+    let selector = rule['selector']
     let property = rule['property']
     let value = rule['value']
-
-    return property.toString() + '\t' + value.toString()
+    return selector.toString() +'\t' + property.toString() + '\t' + value.toString()
 }
 
 function addRule(i, rule) {
