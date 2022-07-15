@@ -8,12 +8,34 @@
   <script src="third-party/jquery-ui-1.12.1.js"></script>
   <title>Content changer</title>
 </head>
-<body style="width: 400px">
-  <div id="rules"></div>
-  <form>
-    <input type="button" value="Apply rule!">
-  </form>
-  <p>Rule applied.</p>
+<body>
+<div class="col">
+  <div class="row">
+    <div>Style property:</div>
+    <label for="ruleproperty"></label>
+    <input type="text" id="ruleproperty">
+    <div>Property value:</div>
+    <label for="rulevalue"></label>
+    <input type="text" id="rulevalue">
+    <input id="apply" type="button" value="Apply">
+  </div>
+  <div class="row">
+    <div class="row">
+      <div>
+        Existing rules for domain:
+      </div>
+      <div id="domain_name">
+        example.com
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col" id="rules_list">
+    </div>
+  </div>
+</div>
+  <script src="basic-func.js"></script>
   <script src="main.js"></script>
+  <script src="ruleslist.js"></script>
 </body>
 </html>
