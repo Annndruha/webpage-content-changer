@@ -40,14 +40,15 @@ function remove_rule(){
                 //     for (let i=ruleid; i<n_rules; i++){
                 //         site_rules[ruleid] = site_rules[ruleid+1]
                 //     }
-                //     delete site_rules[n_rules]
+                //
                 // }
                 //
-                // chrome.storage.local.set({[domain]: site_rules}, () => {
-                //     chrome.storage.local.get(null, (res) => {
-                //         addRuleslist(domain)
-                //         console.log("Storage value set:", res[domain])})
-                // })
+                delete site_rules[n_rules]
+                chrome.storage.local.set({[domain]: site_rules}, () => {
+                    chrome.storage.local.get(null, (res) => {
+                        addRuleslist(domain)
+                        console.log("Storage value set:", res[domain])})
+                })
             }
         })
     })
