@@ -9,7 +9,7 @@ function changeContent(rules) {
             let value = rule['value']
             let selector = rule['selector']
             let el = document.querySelector(selector)
-            el.style.setProperty(property, value)
+            el.style.setProperty(property, value.replace(';', ''))
         }
         catch (e) {
             console.log(e)
@@ -27,7 +27,7 @@ chrome.storage.local.get(null, (res)=> {
 })
 
 
-
+// =====================================================================================================================
 // chrome.storage.local.get(null, (res)=> {
 //     console.log('local.get')
 //     console.log(res)

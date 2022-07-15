@@ -12,7 +12,7 @@ function addRule(i, rule) {
     rules_list.appendChild(item)
 }
 
-function addRuleslist(rules) {
+function _addRuleslist(rules) {
     let n_rules = Object.keys(rules).length
     for (let i = 1; i < n_rules+1; i++) {
         let rule = rules[i]
@@ -20,16 +20,17 @@ function addRuleslist(rules) {
     }
 }
 
-chrome.tabs.query({active: true}, function(tabs){
-    let url = new URL(tabs[0].url)
-    let domain = url.hostname
-    let domain_name = document.querySelector('#domain_name')
-    domain_name.innerHTML = domain
+function _removeRuleslist(){
+    let rules_list = document.querySelector('#rules_list')
+    rules_list.innerHTML = ''
+}
 
+function addRuleslist(domain) {
     chrome.storage.local.get(null, (res)=> {
         let rules = res[domain]
         if (varDefined(rules)){
-            addRuleslist(rules)
+            _removeRuleslist()
+            _addRuleslist(rules)
         }
     })
-})
+}
